@@ -82,6 +82,302 @@ paths:
           description: Unauthorized.
         '400':
           description: Bad request.
+  /orders:
+    post:
+      operationId: createOrder
+      summary: Create Order
+      description: >-
+        Create a new transportation order on the J.B. Hunt 360 platform.
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: string
+                origin:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    postalCode:
+                      type: string
+                destination:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    postalCode:
+                      type: string
+                pickupDate:
+                  type: string
+                  format: date
+                deliveryDate:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: Order created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: string
+                  status:
+                    type: string
+        '401':
+          description: Unauthorized.
+    get:
+      operationId: searchOrders
+      summary: Search Orders
+      description: Search and retrieve orders on the J.B. Hunt 360 platform.
+      tags:
+        - Orders
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: fromDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Orders returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orderId:
+                          type: string
+                        status:
+                          type: string
+                        origin:
+                          type: string
+                        destination:
+                          type: string
+        '401':
+          description: Unauthorized.
+  /orders/{orderId}:
+    get:
+      operationId: getOrder
+      summary: Get Order Details
+      description: Retrieve details for a specific order.
+      tags:
+        - Orders
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order details returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: string
+                  status:
+                    type: string
+                  origin:
+                    type: object
+                  destination:
+                    type: object
+                  pickupDate:
+                    type: string
+                    format: date
+                  deliveryDate:
+                    type: string
+                    format: date
+        '404':
+          description: Order not found.
+  /tracking/{shipmentId}:
+    get:
+      operationId: trackShipment
+      summary: Track Shipment
+      description: >-
+        Get near real-time tracking information for a freight shipment.
+      tags:
+        - Tracking
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tracking information returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shipmentId:
+                    type: string
+                  status:
+                    type: string
+                  currentLocation:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                      city:
+                        type: string
+                      state:
+                        type: string
+                  eta:
+                    type: string
+                    format: date-time
+                  lastUpdated:
+                    type: string
+                    format: date-time
+        '404':
+          description: Shipment not found.
+  /documents:
+    post:
+      operationId: uploadDocument
+      summary: Upload Document
+      description: >-
+        Upload a document related to a J.B. Hunt shipment, such as a bill of
+        lading or proof of delivery.
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                shipmentId:
+                  type: string
+                documentType:
+                  type: string
+                  enum:
+                    - BOL
+                    - POD
+                    - INVOICE
+                    - OTHER
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Document uploaded successfully.
+        '400':
+          description: Bad request.
+    get:
+      operationId: getDocuments
+      summary: Get Documents
+      description: >-
+        Retrieve documents related to a J.B. Hunt shipment.
+      tags:
+        - Documents
+      parameters:
+        - name: shipmentId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Documents returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        documentId:
+                          type: string
+                        documentType:
+                          type: string
+                        uploadedAt:
+                          type: string
+                          format: date-time
+                        downloadUrl:
+                          type: string
+        '404':
+          description: No documents found.
+  /appointments:
+    post:
+      operationId: createAppointment
+      summary: Create Appointment
+      description: Set a pickup or delivery appointment for a shipment.
+      tags:
+        - Scheduling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderId:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                    - PICKUP
+                    - DELIVERY
+                appointmentDate:
+                  type: string
+                  format: date
+                timeWindow:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      format: time
+                    end:
+                      type: string
+                      format: time
+      responses:
+        '201':
+          description: Appointment created successfully.
+        '400':
+          description: Bad request.
 tags:
   - name: Quotes
     description: Request shipping quotes and rates.
