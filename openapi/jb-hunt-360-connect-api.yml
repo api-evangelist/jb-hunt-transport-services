@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: J.B. Hunt 360 Connect API
+  description: >-
+    The J.B. Hunt 360 Connect API provides programmatic access to quoting, order
+    management, shipment tracking, document management, and scheduling on the
+    J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and
+    less-than-truckload (LTL) shipment operations.
+  version: 1.0.0
+  contact:
+    name: J.B. Hunt Developer Support
+    url: https://developer.jbhunt.com/connect-360
+  license:
+    name: Proprietary
+    url: https://www.jbhunt.com/
+servers:
+  - url: https://api.jbhunt.com
+    description: Production
+paths:
+  /quotes:
+    post:
+      operationId: createQuote
+      summary: Request Quote
+      description: >-
+        Request an on-demand quote for full-truckload or LTL shipment at
+        current market or contractual rates.
+      tags:
+        - Quotes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                origin:
+                  type: object
+                  properties:
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    postalCode:
+                      type: string
+                destination:
+                  type: object
+                  properties:
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    postalCode:
+                      type: string
+                shipmentType:
+                  type: string
+                  enum:
+                    - FTL
+                    - LTL
+                pickupDate:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Quote returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quoteId:
+                    type: string
+                  rate:
+                    type: number
+                  currency:
+                    type: string
+                  validUntil:
+                    type: string
+                    format: date-time
+                  shipmentType:
+                    type: string
+        '401':
+          description: Unauthorized.
+        '400':
+          description: Bad request.
+tags:
+  - name: Quotes
+    description: Request shipping quotes and rates.
+  - name: Orders
+    description: Create, search, and manage transportation orders.
+  - name: Tracking
+    description: Near real-time freight shipment tracking.
+  - name: Documents
+    description: Upload and retrieve shipment documents.
+  - name: Scheduling
+    description: Manage pickup and delivery appointments.
