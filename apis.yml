@@ -10,11 +10,11 @@ created: '2025-03-01'
 modified: '2025-03-01'
 specificationVersion: '0.18'
 tags:
-  - Trucking
-  - Logistics
-  - Transportation
   - Freight
   - Intermodal
+  - Logistics
+  - Transportation
+  - Trucking
 apis:
   - name: J.B. Hunt 360 Connect API
     description: >-
@@ -26,12 +26,12 @@ apis:
     humanURL: https://apiportal.jbhunt.com/docs/services
     baseURL: https://api.jbhunt.com
     tags:
-      - Freight
-      - Quotes
-      - Orders
-      - Tracking
       - Documents
+      - Freight
+      - Orders
+      - Quotes
       - Scheduling
+      - Tracking
     properties:
       - type: Documentation
         url: https://apiportal.jbhunt.com/docs/services
