@@ -4,149 +4,59 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: J.B. Hunt Transport Services
 providerId: jb-hunt-transport-services
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Freight
-  - Intermodal
   - Logistics
-  - Shipping
-  - Supply Chain
   - Transportation
   - Trucking
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Freight
+  - Supply Chain
+description: J.B. Hunt 360 Connect APIs are available to shippers and carriers under partner agreements
+  through the J.B. Hunt 360 platform. There is no public, self-service rate card for the API itself;
+  pricing is embedded in the underlying freight contract (rate per load, fuel surcharge, accessorials)
+  and software-as-a-service relationships between J.B. Hunt and its customers. Developer access to the
+  API portal is available to credentialed J.B. Hunt 360 customers and integration partners.
+notes: J.B. Hunt does not publish API plan pricing. The economic exchange happens at the freight transaction
+  layer (per-load freight rate + accessorials) rather than per-API-call.
+sources:
+  - https://apiportal.jbhunt.com/docs/services
+  - https://developer.jbhunt.com/connect-360
+  - https://www.jbhunt.com/technology/connectivity
 plans:
-  - id: jb-hunt-transport-services-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the J.B. Hunt Transport Services API surface. Intended for evaluation,
-      prototyping, and low-volume integrations. Real limits and pricing must be reconciled with the provider's
-      published plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.jbhunt.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.jbhunt.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: J.B. Hunt 360 Connect API
-  - id: jb-hunt-transport-services-pro
-    name: Professional
-    type: paid
-    description: Production tier for J.B. Hunt Transport Services. Provides higher quotas, priority support,
-      and access to the broader API portfolio. Pricing placeholder; align with the provider's pricing
-      page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.jbhunt.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.jbhunt.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.jbhunt.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: J.B. Hunt 360 Connect API
-  - id: jb-hunt-transport-services-enterprise
-    name: Enterprise
+  - id: jb-hunt-transport-services-360-connect
+    name: J.B. Hunt 360 Connect (Partner)
     type: enterprise
-    description: Custom-negotiated tier for J.B. Hunt Transport Services. Includes dedicated capacity,
-      contractual SLAs, security review, data residency options, and named technical account management.
+    description: Free programmatic access for credentialed J.B. Hunt 360 shippers and carriers; the
+      revenue-generating exchange is the underlying freight contract.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: API access
+        name: api_access
+        type: subscription
+        metric: month
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.jbhunt.com
+        geo: US
         unit: 1
-        price: custom
+        price: included with 360 platform
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.jbhunt.com
+      - label: Freight transaction
+        name: freight_transaction
+        type: metered
+        metric: load
+        limit: -1
+        timeFrame: usage
+        geo: US
         unit: 1
-        price: custom
+        price: per freight contract
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: J.B. Hunt 360 Connect API
+      - name: Quoting / Rate
+      - name: Order Management
+      - name: Shipment Tracking
+      - name: Document Management
+      - name: Scheduling / Appointments
+      - name: FTL and LTL operations
 maintainers:
   - FN: API Evangelist
-    url: https://apievangelist.com
     email: info@apievangelist.com

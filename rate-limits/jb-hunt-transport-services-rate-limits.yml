@@ -4,89 +4,34 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: J.B. Hunt Transport Services
 providerId: jb-hunt-transport-services
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Freight
-  - Intermodal
-  - Logistics
-  - Shipping
-  - Supply Chain
-  - Transportation
-  - Trucking
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the J.B. Hunt Transport Services API surface.
-  Captures per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold
-  values to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Logistics
+  - Transportation
+  - Freight
+description: J.B. Hunt does not publish standardized rate-limit documentation for the J.B. Hunt 360
+  Connect API. Limits are provisioned per integration partner at the API gateway, with capacity sized
+  to the volume of loads the partner moves with J.B. Hunt.
+notes: No public rate-limit documentation. Contact your J.B. Hunt 360 integration manager for partner-specific
+  limits.
+sources:
+  - https://apiportal.jbhunt.com/docs/services
+  - https://developer.jbhunt.com/connect-360
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
+  - name: Partner Limit
     scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - J.B. Hunt 360 Connect API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - J.B. Hunt 360 Connect API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - J.B. Hunt 360 Connect API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - J.B. Hunt 360 Connect API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - J.B. Hunt 360 Connect API
+    metric: varies
+    limit: see partner integration agreement
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Backoff
+    description: Honor Retry-After when issued; back off exponentially with jitter on 429 / 503.
+  - name: Partner Capacity
+    description: Throughput is sized to partner load volume; raise via your J.B. Hunt 360 integration
+      manager.
 maintainers:
   - FN: API Evangelist
-    url: https://apievangelist.com
     email: info@apievangelist.com

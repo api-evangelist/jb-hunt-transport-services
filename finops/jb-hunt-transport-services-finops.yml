@@ -1,139 +1,86 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: J.B. Hunt Transport Services
+providerId: jb-hunt-transport-services
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Logistics
+  - Freight
+  - Transportation
+description: 'FOCUS-aligned FinOps placeholder for J.B. Hunt 360 Connect: API access is bundled with
+  the underlying freight relationship; the billable surface is the freight contract (linehaul, fuel
+  surcharge, accessorials, demurrage), not API calls.'
+notes: J.B. Hunt does not publish a public API rate card. Meters below model the economic surface a
+  shipper or partner sees on a J.B. Hunt invoice.
+sources:
+  - https://www.jbhunt.com/
+  - https://apiportal.jbhunt.com/docs/services
+  - https://developer.jbhunt.com/connect-360
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: J.B. Hunt Transport Services
-providerId: jb-hunt-transport-services
-publisherName: J.B. Hunt Transport Services
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Freight
-  - Intermodal
-  - Logistics
-  - Shipping
-  - Supply Chain
-  - Transportation
-  - Trucking
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the J.B. Hunt Transport Services API surface. Provides a
-  FOCUS-aligned mapping for cost allocation, usage measurement, and unit-economics reporting across the
-  provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: J.B. Hunt Transport Services, Inc.
+serviceCategory: Logistics / Transportation
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Per-Load + Accessorial
+  billingFrequency: Per-Invoice
   billingCurrency: USD
   chargeCategories:
     - Usage
-    - Purchase
-    - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Tax
 focusColumns:
-  ServiceName: J.B. Hunt Transport Services
-  ServiceCategory: Developer Tools / API
+  ServiceName: J.B. Hunt 360
+  ServiceCategory: Logistics / Transportation
   ProviderName: J.B. Hunt Transport Services
-  PublisherName: J.B. Hunt Transport Services
-  InvoiceIssuerName: J.B. Hunt Transport Services
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: J.B. Hunt Transport Services, Inc.
+  InvoiceIssuerName: J.B. Hunt Transport Services, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
+  - name: linehaul_charge
+    unit: load
+    aggregation: sum
+    dimensions:
+      - mode
+      - origin_region
+      - destination_region
+  - name: fuel_surcharge
+    unit: load
+    aggregation: sum
+    dimensions:
+      - mode
+  - name: accessorials
+    unit: event
+    aggregation: sum
+    dimensions:
+      - accessorial_type
   - name: api_requests
-    description: Count of billable API requests
     unit: request
     aggregation: sum
     dimensions:
-      - api
       - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: J.B. Hunt 360 Connect API
-    baseURL: https://api.jbhunt.com
-    tags:
-      - Documents
-      - Freight
-      - Orders
-      - Quotes
-      - Scheduling
-      - Tracking
-    serviceName: J.B. Hunt 360 Connect API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - partner
+principles:
+  - name: Visibility
+    description: Use the J.B. Hunt 360 platform's invoice and shipment APIs to extract per-load cost
+      and accessorials; reconcile against carrier invoices monthly.
+  - name: Allocation
+    description: Tag shipments with cost center, business unit, and customer order so freight cost
+      is allocated to the revenue line that drove the load.
+  - name: Optimization
+    description: Use 360 quoting to compare rates, consolidate LTL into FTL where possible, plan appointments
+      to avoid detention/demurrage accessorials.
+  - name: Accountability
+    description: Logistics manager owns load-level cost and accessorial overruns; weekly review of
+      anomalies in the 360 platform.
 maintainers:
   - FN: API Evangelist
-    url: https://apievangelist.com
     email: info@apievangelist.com
