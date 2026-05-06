@@ -1,0 +1,339 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: J.B. Hunt 360 Connect API
+  description: The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking,
+    document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload
+    (LTL) shipment operations.
+  tags:
+  - Jb
+  - Hunt
+  - Transport
+  - Services
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: jb-hunt-transport-services
+    baseUri: https://api.jbhunt.com
+    description: J.B. Hunt 360 Connect API HTTP API.
+    resources:
+    - name: quotes
+      path: /quotes
+      operations:
+      - name: createquote
+        method: POST
+        description: Request Quote
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders
+      path: /orders
+      operations:
+      - name: createorder
+        method: POST
+        description: Create Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: searchorders
+        method: GET
+        description: Search Orders
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: fromDate
+          in: query
+          type: string
+        - name: toDate
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders-orderid
+      path: /orders/{orderId}
+      operations:
+      - name: getorder
+        method: GET
+        description: Get Order Details
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tracking-shipmentid
+      path: /tracking/{shipmentId}
+      operations:
+      - name: trackshipment
+        method: GET
+        description: Track Shipment
+        inputParameters:
+        - name: shipmentId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: documents
+      path: /documents
+      operations:
+      - name: uploaddocument
+        method: POST
+        description: Upload Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getdocuments
+        method: GET
+        description: Get Documents
+        inputParameters:
+        - name: shipmentId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: appointments
+      path: /appointments
+      operations:
+      - name: createappointment
+        method: POST
+        description: Create Appointment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: jb-hunt-transport-services-rest
+    description: REST adapter for J.B. Hunt 360 Connect API.
+    resources:
+    - path: /quotes
+      name: createquote
+      operations:
+      - method: POST
+        name: createquote
+        description: Request Quote
+        call: jb-hunt-transport-services.createquote
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders
+      name: createorder
+      operations:
+      - method: POST
+        name: createorder
+        description: Create Order
+        call: jb-hunt-transport-services.createorder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders
+      name: searchorders
+      operations:
+      - method: GET
+        name: searchorders
+        description: Search Orders
+        call: jb-hunt-transport-services.searchorders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{orderId}
+      name: getorder
+      operations:
+      - method: GET
+        name: getorder
+        description: Get Order Details
+        call: jb-hunt-transport-services.getorder
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /tracking/{shipmentId}
+      name: trackshipment
+      operations:
+      - method: GET
+        name: trackshipment
+        description: Track Shipment
+        call: jb-hunt-transport-services.trackshipment
+        with:
+          shipmentId: rest.shipmentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /documents
+      name: uploaddocument
+      operations:
+      - method: POST
+        name: uploaddocument
+        description: Upload Document
+        call: jb-hunt-transport-services.uploaddocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /documents
+      name: getdocuments
+      operations:
+      - method: GET
+        name: getdocuments
+        description: Get Documents
+        call: jb-hunt-transport-services.getdocuments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /appointments
+      name: createappointment
+      operations:
+      - method: POST
+        name: createappointment
+        description: Create Appointment
+        call: jb-hunt-transport-services.createappointment
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: jb-hunt-transport-services-mcp
+    transport: http
+    description: MCP adapter for J.B. Hunt 360 Connect API for AI agent use.
+    tools:
+    - name: createquote
+      description: Request Quote
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jb-hunt-transport-services.createquote
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createorder
+      description: Create Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jb-hunt-transport-services.createorder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchorders
+      description: Search Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jb-hunt-transport-services.searchorders
+      with:
+        status: tools.status
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      inputParameters:
+      - name: status
+        type: string
+        description: status
+      - name: fromDate
+        type: string
+        description: fromDate
+      - name: toDate
+        type: string
+        description: toDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getorder
+      description: Get Order Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jb-hunt-transport-services.getorder
+      with:
+        orderId: tools.orderId
+      inputParameters:
+      - name: orderId
+        type: string
+        description: orderId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: trackshipment
+      description: Track Shipment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jb-hunt-transport-services.trackshipment
+      with:
+        shipmentId: tools.shipmentId
+      inputParameters:
+      - name: shipmentId
+        type: string
+        description: shipmentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: uploaddocument
+      description: Upload Document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jb-hunt-transport-services.uploaddocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdocuments
+      description: Get Documents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jb-hunt-transport-services.getdocuments
+      with:
+        shipmentId: tools.shipmentId
+      inputParameters:
+      - name: shipmentId
+        type: string
+        description: shipmentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createappointment
+      description: Create Appointment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jb-hunt-transport-services.createappointment
+      outputParameters:
+      - type: object
+        mapping: $.
