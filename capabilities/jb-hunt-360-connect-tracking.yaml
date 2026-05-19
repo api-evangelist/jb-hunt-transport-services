@@ -1,0 +1,76 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: J.B. Hunt 360 Connect API — Tracking
+  description: 'J.B. Hunt 360 Connect API — Tracking. 1 operations. Lead operation: Track Shipment. Self-contained Naftiko
+    capability covering one Jb Hunt Transport Services business surface.'
+  tags:
+  - Jb Hunt Transport Services
+  - Tracking
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    JB_HUNT_TRANSPORT_SERVICES_API_KEY: JB_HUNT_TRANSPORT_SERVICES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: jb-hunt-360-connect-tracking
+    baseUri: https://api.jbhunt.com
+    description: J.B. Hunt 360 Connect API — Tracking business capability. Self-contained, no shared references.
+    resources:
+    - name: tracking-shipmentId
+      path: /tracking/{shipmentId}
+      operations:
+      - name: trackshipment
+        method: GET
+        description: Track Shipment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: shipmentId
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: jb-hunt-360-connect-tracking-rest
+    port: 8080
+    description: REST adapter for J.B. Hunt 360 Connect API — Tracking. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/tracking/{shipmentid}
+      name: tracking-shipmentid
+      description: REST surface for tracking-shipmentId.
+      operations:
+      - method: GET
+        name: trackshipment
+        description: Track Shipment
+        call: jb-hunt-360-connect-tracking.trackshipment
+        with:
+          shipmentId: rest.shipmentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: jb-hunt-360-connect-tracking-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for J.B. Hunt 360 Connect API — Tracking. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: track-shipment
+      description: Track Shipment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jb-hunt-360-connect-tracking.trackshipment
+      with:
+        shipmentId: tools.shipmentId
+      outputParameters:
+      - type: object
+        mapping: $.
