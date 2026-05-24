@@ -62,6 +62,8 @@ common:
   url: https://www.jbhunt.com/
 - type: Connectivity
   url: https://www.jbhunt.com/technology/connectivity
+- type: LLMsTxt
+  url: https://developer.jbhunt.com/llms.txt
 maintainers:
 - FN: API Evangelist
   url: https://apievangelist.com
