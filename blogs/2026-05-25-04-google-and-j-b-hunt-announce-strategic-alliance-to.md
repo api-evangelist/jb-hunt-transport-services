@@ -1,0 +1,10 @@
+---
+title: Google and J.B. Hunt Announce Strategic Alliance to ...
+url: https://www.prnewswire.com/news-releases/google-and-jb-hunt-announce-strategic-alliance-to-accelerate-innovation-in-transportation-and-logistics-301230485.html
+date: '2026-05-25'
+query: '"J.B. Hunt Transport Services" blog artificial intelligence'
+position: 4
+source: serpapi-google
+displayed_link: https://www.prnewswire.com › news-releases › google-a...
+---
+By implementing Google Cloud solutions, including artificial intelligence and machine learning ... J.B. Hunt Transport Services, Inc., an S&P 500 ...
