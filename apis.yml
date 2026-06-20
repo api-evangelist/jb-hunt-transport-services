@@ -6,7 +6,7 @@ description: >-
   shippers and partners to programmatically access quotes, order management, shipment tracking, document management, and
   scheduling for full-truckload (FTL) and less-than-truckload (LTL) operations.
 type: Index
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Freight
   - Intermodal
@@ -27,7 +27,7 @@ apis:
       The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking,
       document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and
       less-than-truckload (LTL) shipment operations.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://apiportal.jbhunt.com/docs/services
     baseURL: https://api.jbhunt.com
     tags:
