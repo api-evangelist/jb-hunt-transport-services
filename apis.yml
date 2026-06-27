@@ -40,7 +40,7 @@ apis:
     properties:
       - type: Documentation
         url: https://apiportal.jbhunt.com/docs/services
-      - type: Developer Portal
+      - type: DeveloperPortal
         url: https://developer.jbhunt.com/connect-360
       - type: OpenAPI
         url: openapi/jb-hunt-360-connect-api.yml
@@ -49,13 +49,13 @@ common:
     url: https://www.linkedin.com/company/jb-hunt-transport-services-inc
   - type: Portal
     url: https://apiportal.jbhunt.com/docs/services
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.jbhunt.com/connect-360
   - type: Website
     url: https://www.jbhunt.com/
   - type: Connectivity
     url: https://www.jbhunt.com/technology/connectivity
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developer.jbhunt.com/llms.txt
 maintainers:
   - FN: API Evangelist
