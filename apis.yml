@@ -45,6 +45,8 @@ apis:
       - type: OpenAPI
         url: openapi/jb-hunt-360-connect-api.yml
 common:
+  - type: DomainSecurity
+    url: security/jb-hunt-transport-services-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/jb-hunt-transport-services-inc
   - type: Portal
@@ -57,6 +59,8 @@ common:
     url: https://www.jbhunt.com/technology/connectivity
   - type: LlmsText
     url: https://developer.jbhunt.com/llms.txt
+  - url: https://www.jbhunt.com/our-company/newsroom
+    type: Blog
 maintainers:
   - FN: API Evangelist
     url: https://apievangelist.com
