@@ -45,6 +45,8 @@ apis:
       - type: OpenAPI
         url: openapi/jb-hunt-360-connect-api.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/jb-hunt-transport-services-agentic-access.yml
   - type: DomainSecurity
     url: security/jb-hunt-transport-services-domain-security.yml
   - type: LinkedIn
