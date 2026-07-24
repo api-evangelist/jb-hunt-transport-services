@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: J.B. Hunt 360 Connect Documents Scheduling API
+  description: The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking, document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload (LTL) shipment operations.
+  version: 1.0.0
+  contact:
+    name: J.B. Hunt Developer Support
+    url: https://developer.jbhunt.com/connect-360
+  license:
+    name: Proprietary
+    url: https://www.jbhunt.com/
+servers:
+- url: https://api.jbhunt.com
+  description: Production
+tags:
+- name: Scheduling
+  description: Manage pickup and delivery appointments.
+paths:
+  /appointments:
+    post:
+      operationId: createAppointment
+      summary: Create Appointment
+      description: Set a pickup or delivery appointment for a shipment.
+      tags:
+      - Scheduling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderId:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - PICKUP
+                  - DELIVERY
+                appointmentDate:
+                  type: string
+                  format: date
+                timeWindow:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      format: time
+                    end:
+                      type: string
+                      format: time
+      responses:
+        '201':
+          description: Appointment created successfully.
+        '400':
+          description: Bad request.

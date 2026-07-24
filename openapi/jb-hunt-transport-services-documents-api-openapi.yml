@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: J.B. Hunt 360 Connect Documents API
+  description: The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking, document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload (LTL) shipment operations.
+  version: 1.0.0
+  contact:
+    name: J.B. Hunt Developer Support
+    url: https://developer.jbhunt.com/connect-360
+  license:
+    name: Proprietary
+    url: https://www.jbhunt.com/
+servers:
+- url: https://api.jbhunt.com
+  description: Production
+tags:
+- name: Documents
+  description: Upload and retrieve shipment documents.
+paths:
+  /documents:
+    post:
+      operationId: uploadDocument
+      summary: Upload Document
+      description: Upload a document related to a J.B. Hunt shipment, such as a bill of lading or proof of delivery.
+      tags:
+      - Documents
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                shipmentId:
+                  type: string
+                documentType:
+                  type: string
+                  enum:
+                  - BOL
+                  - POD
+                  - INVOICE
+                  - OTHER
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Document uploaded successfully.
+        '400':
+          description: Bad request.
+    get:
+      operationId: getDocuments
+      summary: Get Documents
+      description: Retrieve documents related to a J.B. Hunt shipment.
+      tags:
+      - Documents
+      parameters:
+      - name: shipmentId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Documents returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        documentId:
+                          type: string
+                        documentType:
+                          type: string
+                        uploadedAt:
+                          type: string
+                          format: date-time
+                        downloadUrl:
+                          type: string
+        '404':
+          description: No documents found.

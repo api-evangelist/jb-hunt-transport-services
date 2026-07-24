@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: J.B. Hunt 360 Connect Documents Tracking API
+  description: The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking, document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload (LTL) shipment operations.
+  version: 1.0.0
+  contact:
+    name: J.B. Hunt Developer Support
+    url: https://developer.jbhunt.com/connect-360
+  license:
+    name: Proprietary
+    url: https://www.jbhunt.com/
+servers:
+- url: https://api.jbhunt.com
+  description: Production
+tags:
+- name: Tracking
+  description: Near real-time freight shipment tracking.
+paths:
+  /tracking/{shipmentId}:
+    get:
+      operationId: trackShipment
+      summary: Track Shipment
+      description: Get near real-time tracking information for a freight shipment.
+      tags:
+      - Tracking
+      parameters:
+      - name: shipmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tracking information returned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shipmentId:
+                    type: string
+                  status:
+                    type: string
+                  currentLocation:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                      city:
+                        type: string
+                      state:
+                        type: string
+                  eta:
+                    type: string
+                    format: date-time
+                  lastUpdated:
+                    type: string
+                    format: date-time
+        '404':
+          description: Shipment not found.
