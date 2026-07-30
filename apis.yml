@@ -6,7 +6,19 @@ description: >-
   shippers and partners to programmatically access quotes, order management, shipment tracking, document management, and
   scheduling for full-truckload (FTL) and less-than-truckload (LTL) operations.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Paid
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jb-hunt-transport-services.png
 tags:
   - Freight
   - Intermodal
@@ -21,29 +33,76 @@ created: '2025-03-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: jb-hunt-transport-services:jb-hunt-360-connect-api
-    name: J.B. Hunt 360 Connect API
-    description: >-
-      The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking,
-      document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and
-      less-than-truckload (LTL) shipment operations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://apiportal.jbhunt.com/docs/services
-    baseURL: https://api.jbhunt.com
-    tags:
-      - Documents
-      - Freight
-      - Orders
-      - Quotes
-      - Scheduling
-      - Tracking
-    properties:
-      - type: Documentation
-        url: https://apiportal.jbhunt.com/docs/services
-      - type: DeveloperPortal
-        url: https://developer.jbhunt.com/connect-360
-      - type: OpenAPI
-        url: openapi/jb-hunt-360-connect-api.yml
+- aid: jb-hunt-transport-services:jb-hunt-transport-services-documents-api
+  name: J.B. Hunt Transport Services Documents API
+  description: Upload and retrieve shipment documents.
+  humanURL: https://apiportal.jbhunt.com/docs/services
+  baseURL: https://api.jbhunt.com
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/jb-hunt-transport-services-documents-api-openapi.yml
+  - type: Documentation
+    url: https://apiportal.jbhunt.com/docs/services
+  - type: DeveloperPortal
+    url: https://developer.jbhunt.com/connect-360
+- aid: jb-hunt-transport-services:jb-hunt-transport-services-orders-api
+  name: J.B. Hunt Transport Services Orders API
+  description: Create, search, and manage transportation orders.
+  humanURL: https://apiportal.jbhunt.com/docs/services
+  baseURL: https://api.jbhunt.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/jb-hunt-transport-services-orders-api-openapi.yml
+  - type: Documentation
+    url: https://apiportal.jbhunt.com/docs/services
+  - type: DeveloperPortal
+    url: https://developer.jbhunt.com/connect-360
+- aid: jb-hunt-transport-services:jb-hunt-transport-services-quotes-api
+  name: J.B. Hunt Transport Services Quotes API
+  description: Request shipping quotes and rates.
+  humanURL: https://apiportal.jbhunt.com/docs/services
+  baseURL: https://api.jbhunt.com
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/jb-hunt-transport-services-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://apiportal.jbhunt.com/docs/services
+  - type: DeveloperPortal
+    url: https://developer.jbhunt.com/connect-360
+- aid: jb-hunt-transport-services:jb-hunt-transport-services-scheduling-api
+  name: J.B. Hunt Transport Services Scheduling API
+  description: Manage pickup and delivery appointments.
+  humanURL: https://apiportal.jbhunt.com/docs/services
+  baseURL: https://api.jbhunt.com
+  tags:
+  - Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/jb-hunt-transport-services-scheduling-api-openapi.yml
+  - type: Documentation
+    url: https://apiportal.jbhunt.com/docs/services
+  - type: DeveloperPortal
+    url: https://developer.jbhunt.com/connect-360
+- aid: jb-hunt-transport-services:jb-hunt-transport-services-tracking-api
+  name: J.B. Hunt Transport Services Tracking API
+  description: Near real-time freight shipment tracking.
+  humanURL: https://apiportal.jbhunt.com/docs/services
+  baseURL: https://api.jbhunt.com
+  tags:
+  - Tracking
+  properties:
+  - type: OpenAPI
+    url: openapi/jb-hunt-transport-services-tracking-api-openapi.yml
+  - type: Documentation
+    url: https://apiportal.jbhunt.com/docs/services
+  - type: DeveloperPortal
+    url: https://developer.jbhunt.com/connect-360
 common:
   - type: AgenticAccess
     url: agentic-access/jb-hunt-transport-services-agentic-access.yml
