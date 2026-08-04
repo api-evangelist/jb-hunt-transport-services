@@ -1,0 +1,22 @@
+{
+  "provider": "jb-hunt-transport-services",
+  "sources": [
+    "jb-hunt-transport-services-documents-api-openapi.yml",
+    "jb-hunt-transport-services-orders-api-openapi.yml",
+    "jb-hunt-transport-services-quotes-api-openapi.yml",
+    "jb-hunt-transport-services-scheduling-api-openapi.yml",
+    "jb-hunt-transport-services-tracking-api-openapi.yml"
+  ],
+  "outputs": [
+    "jb-hunt-transport-services-documents-api-openapi.yml",
+    "jb-hunt-transport-services-orders-api-openapi.yml",
+    "jb-hunt-transport-services-quotes-api-openapi.yml",
+    "jb-hunt-transport-services-scheduling-api-openapi.yml",
+    "jb-hunt-transport-services-tracking-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
