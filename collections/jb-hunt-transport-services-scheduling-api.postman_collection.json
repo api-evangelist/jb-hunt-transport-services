@@ -1,0 +1,150 @@
+{
+  "item": [
+    {
+      "id": "e8e65b81-be53-48bc-ad19-808bc82ca192",
+      "name": "Scheduling",
+      "description": {
+        "content": "Manage pickup and delivery appointments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34ff3a29-ca08-4fe3-9456-418833de6cf4",
+          "name": "Create Appointment",
+          "request": {
+            "name": "Create Appointment",
+            "description": {
+              "content": "Set a pickup or delivery appointment for a shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"appointmentDate\": \"<date>\",\n  \"timeWindow\": {\n    \"start\": \"<time>\",\n    \"end\": \"<time>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c0096f0-0c7e-4d2f-8a86-2ac1e1597228",
+              "name": "Appointment created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"appointmentDate\": \"<date>\",\n  \"timeWindow\": {\n    \"start\": \"<time>\",\n    \"end\": \"<time>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afcf5425-46c9-411b-96ea-e0490af0a30a",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"appointmentDate\": \"<date>\",\n  \"timeWindow\": {\n    \"start\": \"<time>\",\n    \"end\": \"<time>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.jbhunt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a12e2a01-66e4-43f9-88fe-1ae925eda85f",
+    "name": "J.B. Hunt 360 Connect Documents Scheduling API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking, document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload (LTL) shipment operations.\n\nContact Support:\n Name: J.B. Hunt Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
