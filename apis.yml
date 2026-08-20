@@ -53,6 +53,8 @@ apis:
   humanURL: https://apiportal.jbhunt.com/docs/services
   baseURL: https://api.jbhunt.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
