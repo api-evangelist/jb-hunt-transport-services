@@ -1,0 +1,35 @@
+slug: jb-hunt-transport-services
+provider: J.B. Hunt Transport Services
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Tracking
+  spec_file: jb-hunt-transport-services-tracking-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.9
+  evidence: GET /tracking/{shipmentId} 'Track Shipment'
+  reason: Direct shipment status retrieval by shipment id exposed to shippers and partners — customer-facing
+    shipment tracking.
+- tag: Orders
+  spec_file: jb-hunt-transport-services-orders-api-openapi.yml
+  capability_id: BC-2400.40
+  capability_id_l1: BC-2400
+  capability_name: Booking and Reservation Management
+  confidence: 0.7
+  evidence: POST /orders 'Create Order'; 'Supports full-truckload (FTL) and less-than-truckload (LTL)
+    shipment operations'
+  reason: Shippers create and retrieve transport orders (load bookings) against the carrier's platform
+    — acceptance of freight bookings. Some ambiguity between booking management and order fulfilment framing,
+    hence 0.7.
