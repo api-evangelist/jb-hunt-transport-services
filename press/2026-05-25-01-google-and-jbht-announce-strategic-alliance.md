@@ -1,7 +1,9 @@
 ---
 title: Google and JBHT Announce Strategic Alliance
 url: https://www.jbhunt.com/content/dam/jbhunt/jbh/pr/press-releases/Google%20and%20JBHT%20Announce%20Strategic%20Alliance.pdf
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"J.B. Hunt Transport Services" press release artificial intelligence'
 position: 1
 source: serpapi-google

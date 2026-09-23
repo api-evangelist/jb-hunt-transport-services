@@ -1,11 +1,7 @@
 {
   "provider": "jb-hunt-transport-services",
   "sources": [
-    "jb-hunt-transport-services-documents-api-openapi.yml",
-    "jb-hunt-transport-services-orders-api-openapi.yml",
-    "jb-hunt-transport-services-quotes-api-openapi.yml",
-    "jb-hunt-transport-services-scheduling-api-openapi.yml",
-    "jb-hunt-transport-services-tracking-api-openapi.yml"
+    "_original/jb-hunt-360-connect-api.yml"
   ],
   "outputs": [
     "jb-hunt-transport-services-documents-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "jb-hunt-360-connect-api.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "jb-hunt-transport-services-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "jb-hunt-transport-services-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "jb-hunt-transport-services-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "jb-hunt-transport-services-scheduling-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "jb-hunt-transport-services-tracking-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

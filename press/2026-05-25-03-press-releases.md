@@ -1,7 +1,9 @@
 ---
 title: Press Releases
 url: https://www.googlecloudpresscorner.com/press-releases?l=10&o=700
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"J.B. Hunt Transport Services" press release artificial intelligence'
 position: 3
 source: serpapi-google

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: J.B. Hunt 360 Connect Documents Quotes API
+  title: J.B. Hunt 360 Connect Quotes API
   description: The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking, document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload (LTL) shipment operations.
   version: 1.0.0
   contact:
