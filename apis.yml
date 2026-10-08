@@ -117,6 +117,12 @@ apis:
   - type: DeveloperPortal
     url: https://developer.jbhunt.com/connect-360
 common:
+  - type: Plans
+    url: plans/jb-hunt-transport-services-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/jb-hunt-transport-services-rate-limits.yml
+  - type: FinOps
+    url: finops/jb-hunt-transport-services-finops.yml
   - type: CapabilityMap
     url: capabilities/jb-hunt-transport-services-capability-edges.yml
     name: J.B. Hunt Transport Services Business Capability Map
