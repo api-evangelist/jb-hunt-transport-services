@@ -1,4 +1,4 @@
-# J.B. Hunt Transport Services (jb-hunt-transport-services)
+# J.B. Hunt Transport Services
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,64 +66,121 @@
 
 J.B. Hunt Transport Services, Inc. is one of the largest transportation and logistics companies in North America, providing trucking, intermodal, and contract services. J.B. Hunt offers the J.B. Hunt 360 Connect API portal for shippers and partners to programmatically access quotes, order management, shipment tracking, document management, and scheduling for full-truckload (FTL) and less-than-truckload (LTL) operations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/jb-hunt-transport-services/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/jb-hunt-transport-services/refs/heads/main/apis.yml)
+**Areas:** Freight · Intermodal · Logistics · Shipping · Supply Chain · Transportation · Trucking · Fortune 500
 
-## Scope
+## J.B. Hunt Transport Services on APIs.io
 
-- **Type:** Index
+Everything profiled for J.B. Hunt Transport Services is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/jb-hunt-transport-services/](https://apis.io/providers/jb-hunt-transport-services/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Freight
-- Intermodal
-- Logistics
-- Shipping
-- Supply Chain
-- Transportation
-- Trucking
+- [J.B. Hunt Transport Services Documents API](https://apis.io/apis/jb-hunt-transport-services/jb-hunt-transport-services-documents-api/) — Upload and retrieve shipment documents.
+- [J.B. Hunt Transport Services Orders API](https://apis.io/apis/jb-hunt-transport-services/jb-hunt-transport-services-orders-api/) — Create, search, and manage transportation orders.
+- [J.B. Hunt Transport Services Quotes API](https://apis.io/apis/jb-hunt-transport-services/jb-hunt-transport-services-quotes-api/) — Request shipping quotes and rates.
+- [J.B. Hunt Transport Services Scheduling API](https://apis.io/apis/jb-hunt-transport-services/jb-hunt-transport-services-scheduling-api/) — Manage pickup and delivery appointments.
+- [J.B. Hunt Transport Services Tracking API](https://apis.io/apis/jb-hunt-transport-services/jb-hunt-transport-services-tracking-api/) — Near real-time freight shipment tracking.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### J.B. Hunt 360 Connect API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The J.B. Hunt 360 Connect API provides programmatic access to quoting, order management, shipment tracking, document management, and scheduling on the J.B. Hunt 360 logistics platform. Supports full-truckload (FTL) and less-than-truckload (LTL) shipment operations.
+- [Jb Hunt Transport Services Agentic Access](https://apis.io/agentic-access/jb-hunt-transport-services/jb-hunt-transport-services-agentic-access/)
 
-- **Human URL:** [https://apiportal.jbhunt.com/docs/services](https://apiportal.jbhunt.com/docs/services)
-- **Base URL:** `https://api.jbhunt.com`
+#### Collections (6)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Documents
-- Freight
-- Orders
-- Quotes
-- Scheduling
-- Tracking
+- [J.B. Hunt 360 Connect API](https://apis.io/collections/jb-hunt-transport-services/open-jb-hunt-360-connect-api/)
+- [J.B. Hunt 360 Connect Documents API](https://apis.io/collections/jb-hunt-transport-services/open-jb-hunt-transport-services-documents-api/)
+- [J.B. Hunt 360 Connect Documents Orders API](https://apis.io/collections/jb-hunt-transport-services/open-jb-hunt-transport-services-orders-api/)
+- [J.B. Hunt 360 Connect Documents Quotes API](https://apis.io/collections/jb-hunt-transport-services/open-jb-hunt-transport-services-quotes-api/)
+- [J.B. Hunt 360 Connect Documents Scheduling API](https://apis.io/collections/jb-hunt-transport-services/open-jb-hunt-transport-services-scheduling-api/)
+- [J.B. Hunt 360 Connect Documents Tracking API](https://apis.io/collections/jb-hunt-transport-services/open-jb-hunt-transport-services-tracking-api/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://apiportal.jbhunt.com/docs/services)
-- [Developer  Portal](https://developer.jbhunt.com/connect-360)
-- [OpenAPI](openapi/jb-hunt-360-connect-api.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/jb-hunt-360-connect-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jb-hunt-360-connect-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Jb Hunt Transport Services Domain Security](https://apis.io/security/jb-hunt-transport-services/jb-hunt-transport-services-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/jb-hunt-transport-services-inc)
-- [Portal](https://apiportal.jbhunt.com/docs/services)
-- [Developer  Portal](https://developer.jbhunt.com/connect-360)
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Jb Hunt Transport Services Plans Pricing](https://apis.io/plans/jb-hunt-transport-services/jb-hunt-transport-services-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Jb Hunt Transport Services Rate Limits](https://apis.io/rate-limits/jb-hunt-transport-services/jb-hunt-transport-services-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Jb Hunt Transport Services Finops](https://apis.io/finops/jb-hunt-transport-services/jb-hunt-transport-services-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.jbhunt.com/)
-- [Connectivity](https://www.jbhunt.com/technology/connectivity)
-- [L L Ms Txt](https://developer.jbhunt.com/llms.txt)
+- [Blog](https://www.jbhunt.com/our-company/newsroom)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** API Evangelist
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 20.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 47.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 5.3 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/jb-hunt-transport-services/](https://apis.io/providers/jb-hunt-transport-services/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for J.B. Hunt Transport Services: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/jb-hunt-transport-services/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
